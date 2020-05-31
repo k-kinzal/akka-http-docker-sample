@@ -1,11 +1,11 @@
-lazy val akkaHttpVersion = "10.0.9"
-lazy val akkaVersion    = "2.5.3"
+lazy val akkaHttpVersion = "10.1.11"
+lazy val akkaVersion    = "2.6.5"
 
 lazy val root = (project in file(".")).
   settings(
     inThisBuild(List(
       organization    := "com.example",
-      scalaVersion    := "2.12.2"
+      scalaVersion    := "2.12.10"
     )),
     name := "hello-world",
     libraryDependencies ++= Seq(
