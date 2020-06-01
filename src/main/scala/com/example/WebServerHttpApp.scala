@@ -2,12 +2,14 @@ package com.example
 
 import akka.http.scaladsl.marshallers.xml.ScalaXmlSupport.defaultNodeSeqMarshaller
 import akka.http.scaladsl.server.{ HttpApp, Route }
+import com.typesafe.config.ConfigFactory
 
 /**
  * Server will be started calling `WebServerHttpApp.startServer("localhost", 8080)`
  * and it will be shutdown after pressing return.
  */
 object WebServerHttpApp extends HttpApp with App {
+  val config = ConfigFactory.load()
   // Routes that this WebServer must handle are defined here
   // Please note this method was named `route` in versions prior to 10.0.7
   def routes: Route =
@@ -21,5 +23,5 @@ object WebServerHttpApp extends HttpApp with App {
       }
 
   // This will start the server until the return key is pressed
-  startServer("0.0.0.0", 8080)
+  startServer(config.getString("hostname"), config.getInt("port"))
 }
